@@ -1,0 +1,20 @@
+stages:
+- name: prepare
+  dependencies: [init]
+  scheduler:
+    scheduler_type: singlestep-stage
+    parameters:
+      nevents: {stages: init, output: nevents, unwrap: true}
+      slhafile: {stages: init, output: slhafile, unwrap: true}
+      cmndfile: '{workdir}/steering.cmnd'
+    step: {$ref: 'steps.yml#/prepare'}
+- name: analysis
+  dependencies: [prepare]
+  scheduler:
+    scheduler_type: singlestep-stage
+    parameters:
+      cmndfile: {stages: prepare, output: cmndfile, unwrap: true}
+      lifetime: {stages: init, output: lifetime, unwrap: true}
+      resultfile: '{workdir}/result.json'
+    step: {$ref: 'steps.yml#/analysis'}
+

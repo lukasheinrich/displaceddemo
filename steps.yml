@@ -1,0 +1,24 @@
+prepare:
+  process:
+    process_type: interpolated-script-cmd
+    script: |
+      NEVENTS={nevents} SLHAFILE={slhafile} envsubst displacedBM.cmnd.templ > {cmndfile}
+  publisher:
+    publisher_type: frompar-pub
+    outputmap:
+      cmndfile: cmndfile
+  environment:
+    environment_type: docker-encapsulated
+    image: lukasheinrich/displaceddemo
+analysis:
+  process:
+    process_type: interpolated-script-cmd
+    script: |
+      ./displacedRecoVertex {lifetime} {cmndfile} {resultfile}
+  publisher:
+    publisher_type: frompar-pub
+    outputmap:
+      cmndfile: cmndfile
+  environment:
+    environment_type: docker-encapsulated
+    image: lukasheinrich/displaceddemo
