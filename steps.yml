@@ -2,7 +2,7 @@ prepare:
   process:
     process_type: interpolated-script-cmd
     script: |
-      NEVENTS={nevents} SLHAFILE={slhafile} envsubst displacedBM.cmnd.templ > {cmndfile}
+      NEVENTS={nevents} SLHAFILE={slhafile} envsubst < displacedBM.cmnd.templ > {cmndfile}
   publisher:
     publisher_type: frompar-pub
     outputmap:
