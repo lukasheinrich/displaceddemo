@@ -1,6 +1,7 @@
 toplevel: github:lukasheinrich/displaceddemo
 workflow: workflow.yml
-outputs: 'analysis/result'
+outputs: 'analysis/result.json'
+archive: 'https://github.com/lukasheinrich/displaceddemo/blob/master/exampleinit.zip?raw=true'
 pars:
   nevents: 1000
   lifetime: 2.000
