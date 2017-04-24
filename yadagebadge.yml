@@ -1,0 +1,7 @@
+toplevel: github:lukasheinrich/displaceddemo
+workflow: workflow.yml
+outputs: 'analysis/result'
+pars:
+  nevents: 1000
+  lifetime: 2.000
+  slhafile: RPV_softsusy_sdecay.slha
